@@ -9,20 +9,19 @@ import java.awt.geom.Point2D;
 
 
 /**
- * DOGGBOT - a sample robot by Felipe Sulser
- * <p/>
+ * <p>
+ * Felipe's bot
+ * Robot using Wavesurfer technique
+ * </p>
  * Moves in a cool manner, sneaky af
- *
+ * More info about wavesurfers 
+ * http://blog.bagesoft.com/m/post/464
+ * http://robowiki.net/cgi-bin/robowiki?WaveSurfing/Tutorial
  * @author Felipe Sulser
  * 
  */
-public class ProBot extends AdvancedRobot
+public class TASBot extends AdvancedRobot
 {
-        
-        
-   
-    
-    
      private static double myEnergy;
      private static  Point2D.Double futurePos;
      private static Point2D.Double myPos;
@@ -43,7 +42,7 @@ public class ProBot extends AdvancedRobot
         public void run()
         {
         	
-        		setColors(Color.LIGHT_GRAY, Color.BLACK, Color.WHITE); //swissWagon
+        		setColors(Color.LIGHT_GRAY, Color.BLACK, Color.WHITE); 
         		setTurnRadarRightRadians(Double.POSITIVE_INFINITY); //extra cheeky radar strat
         		
              
@@ -193,10 +192,9 @@ public class ProBot extends AdvancedRobot
                 while (enumVar.hasMoreElements()) {
                         BadBoy enemy = enumVar.nextElement();
                      
-                      
+                    	//how dangerous is enemy --> enemyeEnergy/ourEnergy
+                		//
                         if(enemy.hp) {
-                        		//how dangerous is enemy --> enemyeEnergy/ourEnergy
-                        		//
                                 eval += Math.min(enemy.energy/myEnergy,2) * 
                                 				//evaluates riskiness of position										//anti gravity mov
                                                 (1 + Math.abs(Math.cos(angulo(p, myPos) - angulo(enemy.pos, p)))) / p.distanceSq(enemy.pos);
